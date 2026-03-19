@@ -20,5 +20,18 @@ void loop() {
   int currentState = digitalRead(LED_PIN_R);  // 定义当前LED状态
     digitalWrite(LED_PIN_R, !currentState);
 
-  
+  if (digitalRead(LED_PIN_R) == HIGH) {
+      if (step < 3 || step >= 6) interval = 200;
+      else interval = 600;                      
+    } 
+    else {
+      step++;
+      if (step < 10) {
+        interval = 200; 
+      } else {
+        interval = 2000;
+        step = 0;
+      }
+    }
+  }
 }
