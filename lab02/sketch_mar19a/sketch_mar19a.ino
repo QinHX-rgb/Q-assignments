@@ -20,12 +20,12 @@ void loop() {
   digitalWrite(LED_PIN_G, HIGH);
   digitalWrite(LED_PIN_Y, HIGH);
   Serial.println("LED ON");    // 串口输出提示
-  delay(1000);                 // 保持1秒（1000毫秒）
+  delay(500);                 // 保持0.5秒（500毫秒）
   
   digitalWrite(ledPin, LOW);   // 熄灭LED
   digitalWrite(LED_PIN_R, LOW);
   digitalWrite(LED_PIN_G, LOW);
   digitalWrite(LED_PIN_Y, LOW);
   Serial.println("LED OFF");   // 串口输出提示
-  delay(1000);                 // 保持1秒
+  delay(500);                 // 保持0.5秒
 }
