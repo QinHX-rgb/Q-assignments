@@ -1,4 +1,7 @@
 #define LED_PIN_R 13
+unsigned long previousMillis = 0;
+int step = 0;
+int interval = 200;
 
 
 void setup() {
@@ -9,5 +12,6 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  
+  unsigned long currentMillis= millis();
+
 }
