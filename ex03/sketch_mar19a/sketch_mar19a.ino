@@ -14,4 +14,11 @@ void loop() {
   // put your main code here, to run repeatedly:
   unsigned long currentMillis= millis();
 
+  if (currentMillis - previousMillis >= interval) {
+    previousMillis = currentMillis;
+
+  int currentState = digitalRead(LED_PIN_R);  // 定义当前LED状态
+    digitalWrite(LED_PIN_R, !currentState);
+
+  
 }
