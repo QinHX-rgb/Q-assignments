@@ -13,6 +13,8 @@ int interval = 10;//频闪速率
 void setup() {
    Serial.begin(115200);
    
+  ledcAttach(LED_PIN_R, freq, resolution);
+  ledcAttach(LED_PIN_B, freq, resolution);
 }
 
 void loop() {
