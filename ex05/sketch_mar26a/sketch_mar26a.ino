@@ -6,6 +6,9 @@
 const int freq = 5000;
 const int resolution = 8;
 
+int brightness = 0;//亮度
+int fadeAmount = 5;//速度
+
 int speedLevel = 1; 
 unsigned long lastTriggerTime = 0;
 
@@ -28,6 +31,15 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  ledcWrite(LED_PIN, brightness);
+
+  brightness += fadeAmount;
+
+  if (brightness <= 0 || brightness >= 255) {
+    fadeAmount = -fadeAmount;
+  }
+
+
   Serial.print("Touch Value: ");
   Serial.println(touchRead(TOUCH_PIN));
   delay(100);
