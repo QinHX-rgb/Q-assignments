@@ -20,9 +20,13 @@ void setup() {
   Serial.begin(115200);
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, LOW);
+  
+  touchAttachInterrupt(TOUCH_PIN, gotTouch, THRESHOLD);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-
+  Serial.print("Touch Value: ");
+  Serial.println(touchRead(TOUCH_PIN));
+  delay(100);
 }
