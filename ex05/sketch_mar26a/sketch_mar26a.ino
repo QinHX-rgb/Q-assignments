@@ -18,13 +18,11 @@ void gotTouch() {
   }
 }
 
-
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(115200);
-  pinMode(LED_PIN, OUTPUT);
-  digitalWrite(LED_PIN, LOW);
-  
+
+  ledcAttach(LED_PIN, freq, resolution);
   touchAttachInterrupt(TOUCH_PIN, gotTouch, THRESHOLD);
 }
 
