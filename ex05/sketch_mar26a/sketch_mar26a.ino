@@ -38,6 +38,13 @@ void loop() {
   if (brightness <= 0 || brightness >= 255) {
     fadeAmount = -fadeAmount;
   }
+  
+  int currentDelay;
+  if (speedLevel == 1) currentDelay = 30;
+  else if (speedLevel == 2) currentDelay = 15;
+  else currentDelay = 5;
+
+  delay(currentDelay);
 
 
   Serial.print("Touch Value: ");
