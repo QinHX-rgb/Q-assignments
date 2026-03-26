@@ -9,15 +9,15 @@ const int resolution = 8;
 int speedLevel = 1; 
 unsigned long lastTriggerTime = 0;
 
-void  gotTouch() {
+void gotTouch() {
   unsigned long currentTime = millis();
-  
   if (currentTime - lastTriggerTime > 300) {
-    ledState = !ledState;
-    digitalWrite(LED_PIN, ledState);
+    speedLevel++;
+    if (speedLevel > 3) speedLevel = 1;
     lastTriggerTime = currentTime;
   }
 }
+
 
 void setup() {
   // put your setup code here, to run once:
