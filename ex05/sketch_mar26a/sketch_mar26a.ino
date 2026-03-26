@@ -6,11 +6,11 @@
 const int freq = 5000;
 const int resolution = 8;
 
+int speedLevel = 1; 
+long lastTriggerTime = 0;
+
 int brightness = 0;//亮度
 int fadeAmount = 5;//速度
-
-int speedLevel = 1; 
-unsigned long lastTriggerTime = 0;
 
 void gotTouch() {
   unsigned long currentTime = millis();
@@ -22,15 +22,13 @@ void gotTouch() {
 }
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(115200);
-
+  
   ledcAttach(LED_PIN, freq, resolution);
   touchAttachInterrupt(TOUCH_PIN, gotTouch, THRESHOLD);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   ledcWrite(LED_PIN, brightness);
 
   brightness += fadeAmount;
@@ -38,7 +36,7 @@ void loop() {
   if (brightness <= 0 || brightness >= 255) {
     fadeAmount = -fadeAmount;
   }
-  
+
   int currentDelay;
   if (speedLevel == 1) currentDelay = 30;
   else if (speedLevel == 2) currentDelay = 15;
@@ -46,8 +44,8 @@ void loop() {
 
   delay(currentDelay);
 
-
   Serial.print("Touch Value: ");
-  Serial.println(touchRead(TOUCH_PIN));
-  delay(100);
+  Serial.print(touchRead(TOUCH_PIN));
+  Serial.print(" | Level: ");
+  Serial.println(speedLevel);
 }
